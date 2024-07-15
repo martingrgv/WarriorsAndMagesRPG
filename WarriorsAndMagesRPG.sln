@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarriorsAndMagesRPG", "WarriorsAndMagesRPG\WarriorsAndMagesRPG.csproj", "{C1893694-466A-4C0F-AEB9-AE98EFF3A30B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarriorsAndMagesRPG.Core", "WarriorsAndMagesRPG.Core\WarriorsAndMagesRPG.Core.csproj", "{C71AF77A-15D7-4E3B-A995-0A08ED8307F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C1893694-466A-4C0F-AEB9-AE98EFF3A30B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1893694-466A-4C0F-AEB9-AE98EFF3A30B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1893694-466A-4C0F-AEB9-AE98EFF3A30B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1893694-466A-4C0F-AEB9-AE98EFF3A30B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C71AF77A-15D7-4E3B-A995-0A08ED8307F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C71AF77A-15D7-4E3B-A995-0A08ED8307F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C71AF77A-15D7-4E3B-A995-0A08ED8307F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C71AF77A-15D7-4E3B-A995-0A08ED8307F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53D2A840-DF8F-4318-A4A4-66828AAB2A09}
+	EndGlobalSection
+EndGlobal
