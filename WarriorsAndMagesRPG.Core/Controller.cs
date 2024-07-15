@@ -1,6 +1,8 @@
-﻿namespace WarriorsAndMagesRPG.Core
+﻿using WarriorsAndMagesRPG.Core.Contracts;
+
+namespace WarriorsAndMagesRPG.Core
 {
-    public class Controller
+    public class Controller : IController
     {
     }
 }

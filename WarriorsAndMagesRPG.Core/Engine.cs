@@ -2,6 +2,7 @@
 using WarriorsAndMagesRPG.Core.Contracts;
 using WarriorsAndMagesRPG.Core.Models.Enums;
 using WarriorsAndMagesRPG.Core.Services;
+using static WarriorsAndMagesRPG.Core.Constants;
 
 namespace WarriorsAndMagesRPG.Core
 {
@@ -21,6 +22,7 @@ namespace WarriorsAndMagesRPG.Core
             services.AddSingleton<IPrinterService, ConsolePrinterService>();
             services.AddSingleton<IReaderService, ConsoleReaderService>();
             services.AddSingleton<IMenuService, MenuService>();
+            services.AddSingleton<IController, Controller>();
         }
 
         public void Run()
@@ -29,10 +31,37 @@ namespace WarriorsAndMagesRPG.Core
             IReaderService reader = _serviceProvider.GetService<IReaderService>()!;
             IMenuService menuService = _serviceProvider.GetService<IMenuService>()!;
 
+            int[] charactersRange = {1, 3};
+
             while (true)
             {
                 printer.PrintLine(menuService.GetMenu(Menu.MainMenu));
                 reader.ReadKey();
+
+                printer.Clear();
+
+                char characterType;
+
+                printer.PrintLine(menuService.GetMenu(Menu.CharacterSelect));
+                characterType = reader.ReadKey();
+
+                printer.Clear();
+
+                printer.PrintLine(DEFAULT_STATS_ADD_TEXT);
+                char statsAddChoice = reader.ReadKey();
+
+                printer.PrintLine();
+
+                if (char.ToLower(statsAddChoice) == 'y')
+                {
+                    int points = DEFAULT_BUFF_LIMIT_POINTS;
+                    printer.PrintLine($"Remaining Points: {points}");
+                    reader.ReadKey();
+                }
+
+                printer.Clear();
+
+                printer.PrintLine(menuService.GetMenu(Menu.InGame));
 
                 break;
             }
