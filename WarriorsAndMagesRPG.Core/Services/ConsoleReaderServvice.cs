@@ -9,10 +9,9 @@ namespace WarriorsAndMagesRPG.Core.Services
             return Console.ReadLine()!;
         }
 
-        public string ReadKey()
+        public char ReadKey()
         {
-            return Console.ReadKey().Key
-                .ToString()!;
+            return Console.ReadKey().KeyChar;
         }
     }
 }

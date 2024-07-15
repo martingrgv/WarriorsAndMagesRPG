@@ -11,11 +11,11 @@ namespace WarriorsAndMagesRPG.Core.Services
             switch (menu)
             {
                 case Menu.MainMenu:
-                    return DEFAULT_MAIN_MENU_STRING;
+                    return DEFAULT_MAIN_MENU_TEXT;
                 case Menu.CharacterSelect:
-                    return DEFAULT_CHARACTER_SELECT_MENU_STRING;
-                //case Menu.MainMenu:
-                //    return;
+                    return DEFAULT_CHARACTER_SELECT_MENU_TEXT;
+                case Menu.InGame:
+                    return null; 
                 //case Menu.MainMenu:
                 //    return;
                 default:
