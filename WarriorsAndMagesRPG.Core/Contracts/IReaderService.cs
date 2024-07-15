@@ -3,6 +3,6 @@
     public interface IReaderService
     {
         string Read();
-        string ReadKey();
+        char ReadKey();
     }
 }
