@@ -2,6 +2,14 @@
 {
     public abstract class Character
     {
+        protected Character(int strength, int agility, int intelligence, char characterSymbol) 
+        {
+            Strength = strength;
+            Agility = agility;
+            Intelligence = intelligence;
+            CharacterSymbol = characterSymbol;
+        }
+
         public int Health { get; set; }
         public int Strength { get; set; }
         public int Agility { get; set; }

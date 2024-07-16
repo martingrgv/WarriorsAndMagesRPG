@@ -4,9 +4,6 @@ namespace WarriorsAndMagesRPG.Core.Models
 {
     public class Archer : Character
     {
-        public Archer()
-        {
-            CharacterSymbol = DEFAULT_ARCHER_SYMBOL;
-        }
+        public Archer() : base(ARCHER_STRENGTH, ARCHER_AGILITY, ARCHER_INTELLIGENCE, ARCHER_SYMBOL) { }
     }
 }
