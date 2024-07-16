@@ -2,7 +2,7 @@
 
 namespace WarriorsAndMagesRPG.Core.Models
 {
-    public class Mage : Character
+    public class Mage : CharacterViewModel
     {
         public Mage() : base(MAGE_STRENGTH, MAGE_AGILITY, MAGE_INTELLIGENCE, MAGE_RANGE, MAGE_SYMBOL) { }
 

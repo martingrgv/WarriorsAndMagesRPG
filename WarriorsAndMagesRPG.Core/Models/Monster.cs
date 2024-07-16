@@ -2,7 +2,7 @@
 
 namespace WarriorsAndMagesRPG.Core.Models
 {
-    public class Monster : Character
+    public class Monster : CharacterViewModel
     {
         public Monster() : base (GetRandom(), GetRandom(), GetRandom(), MONSTER_RANGE, MONSTER_SYMBOL) { }
 
