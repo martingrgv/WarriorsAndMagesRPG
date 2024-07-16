@@ -45,6 +45,8 @@
         public const int ARCHER_INTELLIGENCE = 0;
         public const int ARCHER_RANGE = 2;
 
+        public const int MONSTER_STATUS_MIN_RANDOM = 1;
+        public const int MONSTER_STATUS_MAX_RANDOM = 3;
         public const int MONSTER_RANGE = 1;
     }
 }
