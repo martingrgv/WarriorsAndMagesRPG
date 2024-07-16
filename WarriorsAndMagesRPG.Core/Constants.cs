@@ -18,8 +18,16 @@
             "Would you like to buff up your stats before starting?\n" +
             "Response (Y\\N):";
 
+        public const string DEFAULT_EXIT_TEXT =
+            "Thank you for playing! Good bye.";
+
         public const int DEFAULT_BUFF_LIMIT_POINTS = 3;
 
-        public const char DEFAULT_EMPTY_FIELD_CHAR = '▒';
+        public const char DEFAULT_EMPTY_FIELD_SYMBOL = '▒';
+
+        public const char DEFAULT_MAGE_SYMBOL = '*';
+        public const char DEFAULT_WARRIOR_SYMBOL = '@';
+        public const char DEFAULT_ARCHER_SYMBOL = '#';
+        public const char DEFAULT_MONSTER_SYMBOL = '◙';
     }
 }
