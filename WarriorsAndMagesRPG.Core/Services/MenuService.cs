@@ -6,20 +6,28 @@ namespace WarriorsAndMagesRPG.Core.Services
 {
     public class MenuService : IMenuService
     {
-        public string GetMenu(Menu menu)
+        IPrinterService _printerService { get; set; }
+
+        public MenuService(IPrinterService printerService)
         {
+            _printerService = printerService;
+        }
+
+        public void ShowMenu(Menu menu)
+        {
+            _printerService.Clear();
+
             switch (menu)
             {
                 case Menu.MainMenu:
-                    return DEFAULT_MAIN_MENU_TEXT;
+                    _printerService.PrintLine(DEFAULT_MAIN_MENU_TEXT);
+                    break;
                 case Menu.CharacterSelect:
-                    return DEFAULT_CHARACTER_SELECT_MENU_TEXT;
-                case Menu.InGame:
-                    return null; 
-                //case Menu.MainMenu:
-                //    return;
-                default:
-                    throw new ArgumentException($"{menu} is not a valid menu!");
+                    _printerService.PrintLine(DEFAULT_CHARACTER_SELECT_MENU_TEXT);
+                    break;
+                case Menu.Exit:
+                    _printerService.PrintLine(DEFAULT_EXIT_TEXT);
+                    break;
             }
         }
     }
