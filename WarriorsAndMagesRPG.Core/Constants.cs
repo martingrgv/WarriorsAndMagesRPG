@@ -48,5 +48,7 @@
         public const int MONSTER_STATUS_MIN_RANDOM = 1;
         public const int MONSTER_STATUS_MAX_RANDOM = 3;
         public const int MONSTER_RANGE = 1;
+
+        public const int GAME_FIELD_SIZE = 10;
     }
 }
