@@ -40,7 +40,7 @@ namespace WarriorsAndMagesRPG.Infrastructure.Models
 
         [Required]
         [Comment("Character symbol")]
-        public char CharacterSymbol { get; protected set; }
+        public char CharacterSymbol { get; set; }
 
         [Required]
         [Comment("Date of character creation")]
