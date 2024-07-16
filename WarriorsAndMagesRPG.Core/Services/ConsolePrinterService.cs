@@ -14,6 +14,11 @@ namespace WarriorsAndMagesRPG.Core.Services
             Console.Write(text);
         }
 
+        public void Print(char character)
+        {
+            Console.Write(character);
+        }
+
         public void PrintLine()
         {
             Console.WriteLine();

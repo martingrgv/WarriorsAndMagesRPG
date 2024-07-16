@@ -2,6 +2,7 @@
 {
     public interface IPrinterService
     {
+        void Print(char character);
         void Print(string text);
         void PrintLine();
         void PrintLine(char character);
