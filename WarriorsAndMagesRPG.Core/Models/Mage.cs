@@ -4,7 +4,7 @@ namespace WarriorsAndMagesRPG.Core.Models
 {
     public class Mage : Character
     {
-        public Mage() : base(MAGE_STRENGTH, MAGE_AGILITY, MAGE_INTELLIGENCE, MAGE_SYMBOL) { }
+        public Mage() : base(MAGE_STRENGTH, MAGE_AGILITY, MAGE_INTELLIGENCE, MAGE_RANGE, MAGE_SYMBOL) { }
 
         public int Mana { get; protected set; }
 

@@ -2,11 +2,12 @@
 {
     public abstract class Character
     {
-        protected Character(int strength, int agility, int intelligence, char characterSymbol) 
+        protected Character(int strength, int agility, int intelligence, int range, char characterSymbol) 
         {
             Strength = strength;
             Agility = agility;
             Intelligence = intelligence;
+            Range = range;
             CharacterSymbol = characterSymbol;
         }
 
