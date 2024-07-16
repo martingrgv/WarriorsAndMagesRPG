@@ -20,13 +20,13 @@ namespace WarriorsAndMagesRPG.Core.Services
             switch (menu)
             {
                 case Menu.MainMenu:
-                    _printerService.PrintLine(DEFAULT_MAIN_MENU_TEXT);
+                    _printerService.PrintLine(MAIN_MENU_TEXT);
                     break;
                 case Menu.CharacterSelect:
-                    _printerService.PrintLine(DEFAULT_CHARACTER_SELECT_MENU_TEXT);
+                    _printerService.PrintLine(CHARACTER_SELECT_MENU_TEXT);
                     break;
                 case Menu.Exit:
-                    _printerService.PrintLine(DEFAULT_EXIT_TEXT);
+                    _printerService.PrintLine(EXIT_TEXT);
                     break;
             }
         }

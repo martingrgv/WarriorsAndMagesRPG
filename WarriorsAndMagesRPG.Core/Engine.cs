@@ -55,14 +55,14 @@ namespace WarriorsAndMagesRPG.Core
                 Character player = controller.GetCharacter(characterChoice);
 
                 // Character Add Status
-                printerService.PrintLine(DEFAULT_STATS_ADD_TEXT);
+                printerService.PrintLine(STATS_ADD_TEXT);
                 char statsAddChoice = reader.ReadKey();
 
                 printerService.PrintLine();
 
                 if (char.ToLower(statsAddChoice) == 'y')
                 {
-                    int points = DEFAULT_BUFF_LIMIT_POINTS;
+                    int points = BUFF_LIMIT_POINTS;
                     while (points > 0)
                     {
                         printerService.PrintLine($"Remaining Points: {points}");
