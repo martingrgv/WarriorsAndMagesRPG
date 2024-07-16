@@ -4,6 +4,6 @@ namespace WarriorsAndMagesRPG.Core.Contracts
 {
     public interface IMenuService
     {
-        string GetMenu(Menu menu);
+        void ShowMenu(Menu menu);
     }
 }
