@@ -1,6 +1,4 @@
 ﻿using WarriorsAndMagesRPG.Core;
-using WarriorsAndMagesRPG.Core.Contracts;
-using WarriorsAndMagesRPG.Core.Services;
 
 namespace WarriorsAndMagesRPG
 {
