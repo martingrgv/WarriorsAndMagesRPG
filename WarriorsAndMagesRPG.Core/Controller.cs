@@ -1,5 +1,7 @@
 ﻿using WarriorsAndMagesRPG.Core.Contracts;
 using WarriorsAndMagesRPG.Core.Models;
+using WarriorsAndMagesRPG.Infrastructure;
+using WarriorsAndMagesRPG.Infrastructure.Models;
 using static WarriorsAndMagesRPG.Core.Constants;
 
 namespace WarriorsAndMagesRPG.Core
@@ -9,13 +11,16 @@ namespace WarriorsAndMagesRPG.Core
         IPrinterService _printerService;
         IReaderService _readerService;
 
-        public Controller(IPrinterService printerService, IReaderService readerService)
+        WarriorsAndMagesContext _context;
+
+        public Controller(IPrinterService printerService, IReaderService readerService, WarriorsAndMagesContext context)
         {
             _printerService = printerService;
-            _readerService = readerService;     
+            _readerService = readerService;
+            _context = context;
         }
 
-        public int AddStatsToCharacter(Character character, string statName, int points)
+        public int AddStatsToCharacter(CharacterViewModel character, string statName, int points)
         {
             _printerService.Print($"Add to {statName}: ");
             if (int.TryParse(_readerService.Read(), out int pointsToAdd))
@@ -50,7 +55,7 @@ namespace WarriorsAndMagesRPG.Core
 
         }
 
-        public Character GetCharacter(char choice)
+        public CharacterViewModel GetCharacter(char choice)
         {
             switch (choice)
             {
@@ -63,6 +68,14 @@ namespace WarriorsAndMagesRPG.Core
             }
 
             throw new ArgumentException($"Character by choice {choice} could not be created! Possibly not existing.");
+        }
+
+        public void LogCharacter(CharacterViewModel characterViewModel)
+        {
+            Character character = CharacterMapper.ToCharacter(characterViewModel);
+            _context.Characters.Add(character);
+
+            _context.SaveChanges();
         }
     }
 }

@@ -3,6 +3,7 @@ using WarriorsAndMagesRPG.Core.Contracts;
 using WarriorsAndMagesRPG.Core.Models;
 using WarriorsAndMagesRPG.Core.Models.Enums;
 using WarriorsAndMagesRPG.Core.Services;
+using WarriorsAndMagesRPG.Infrastructure;
 using static WarriorsAndMagesRPG.Core.Constants;
 
 namespace WarriorsAndMagesRPG.Core
@@ -20,6 +21,8 @@ namespace WarriorsAndMagesRPG.Core
 
         private void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<WarriorsAndMagesContext>();
+
             services.AddSingleton<IPrinterService, ConsolePrinterService>();
             services.AddSingleton<IReaderService, ConsoleReaderService>();
             services.AddSingleton<IMenuService, MenuService>();
@@ -52,7 +55,7 @@ namespace WarriorsAndMagesRPG.Core
 
                 printerService.Clear();
 
-                Character player = controller.GetCharacter(characterChoice);
+                CharacterViewModel player = controller.GetCharacter(characterChoice);
 
                 // Character Add Status
                 printerService.PrintLine(STATS_ADD_TEXT);
@@ -95,6 +98,9 @@ namespace WarriorsAndMagesRPG.Core
                 }
 
                 player.Setup();
+
+                // Log character to db
+                controller.LogCharacter(player);
 
                 // Exit Menu
                 menuService.ShowMenu(Menu.Exit);

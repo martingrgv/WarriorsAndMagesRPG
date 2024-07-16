@@ -1,15 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WarriorsAndMagesRPG.Infrastructure.Models;
 
 namespace WarriorsAndMagesRPG.Infrastructure
 {
     public class WarriorsAndMagesContext : DbContext
     {
-        public WarriorsAndMagesContext()
-        {
-            
-        }
+        public WarriorsAndMagesContext() { }
 
         public WarriorsAndMagesContext(DbContextOptions options) : base(options) { }
+
+        public DbSet<Character> Characters { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
