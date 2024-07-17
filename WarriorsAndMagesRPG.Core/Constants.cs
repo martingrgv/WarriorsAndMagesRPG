@@ -54,5 +54,6 @@
         public const int START_CHARACTER_POSY = 1;
 
         public static readonly string[] GAME_ACTIONS = { "Attack", "Move" };
+        public static readonly char[] MOVEMENT_KEYS = { 'w', 'a', 's', 'd', 'e', 'q', 'x', 'z' };
     }
 }

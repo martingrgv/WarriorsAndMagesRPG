@@ -9,10 +9,6 @@ namespace WarriorsAndMagesRPG.Core.Services
         private IPrinterService _printerService;
         private IReaderService _readerService;
 
-        private CharacterViewModel _character;
-        private Monster _monster;
-        private int[,] _gameField;
-
         public GameplayService(IPrinterService printerService, IReaderService readerService)
         {
             _printerService = printerService;
@@ -21,25 +17,144 @@ namespace WarriorsAndMagesRPG.Core.Services
 
         public void StartGame(int[,] gameField, CharacterViewModel character)
         {
-            _gameField = gameField;
-            _character = character;
-            _monster = new Monster();
+            List<Monster> monsters = new List<Monster>() { new Monster() };
 
-            PrintPlayerStats();
-            CheckMonsterLocation();
-            PrintField();
-            PrintAction();
+            while (true)
+            {
+                try
+                {
+                    _printerService.Clear();
 
-            _readerService.ReadKey();
+
+                    foreach (var monster in monsters)
+                    {
+                        CheckMonsterLocation(character, monster);
+                    }
+
+                    PrintPlayerStats(character);
+                    PrintField(gameField, character, monsters);
+                    PrintAction();
+
+                    HandleAction(character);
+
+                    //CreateMonster(character, monsters);
+                }
+                catch (ArgumentException e)
+                {
+                    ShowException(e.Message);
+                }
+                catch(InvalidOperationException e)
+                {
+                    ShowException(e.Message);
+                }
+                catch(Exception e)
+                {
+                    ShowException(e.Message);
+                }
+            }
         }
 
-        private void CheckMonsterLocation()
+
+        private void HandleAction(CharacterViewModel character)
         {
-            while (_monster.PosX == 1 && _monster.PosY == 1)
+            char act = _readerService.ReadKey();
+
+            if (act != '1' && act != '2')
+            {
+                throw new ArgumentException("Invalid action! Try again.");
+            }
+
+            _printerService.PrintLine();
+            _printerService.PrintLine($"Choose direction ({string.Join(", ", MOVEMENT_KEYS)}):");
+            char key = char.ToLower(_readerService.ReadKey());
+
+            CheckKey(key);
+
+            if (act == '1')
+            {
+                //character.Attack();
+            }
+            else if (act == '2')
+            {
+                character.Move(key);
+            }
+        }
+
+        private void CheckKey(char key)
+        {
+            if (!MOVEMENT_KEYS.Any(k => k != key))
+            {
+                throw new ArgumentException($"{key} is not a valid key!");
+            }
+        }
+
+        private void Attack()
+        {
+            //_character.Attack();
+        }
+
+        private void Move(CharacterViewModel character, char key)
+        {
+            character.Move(key);
+        }
+
+        private void CreateMonster(CharacterViewModel character, List<Monster> monsters)
+        {
+            monsters.Add(new Monster());
+        }
+
+        private void CheckMonsterLocation(CharacterViewModel character, Monster monster)
+        {
+            while (monster.PosX == character.PosX && monster.PosY == character.PosY)
             {
                 Random rnd = new Random();
-                _monster.PosX = rnd.Next(0, GAME_FIELD_SIZE);
-                _monster.PosY = rnd.Next(0, GAME_FIELD_SIZE);
+                monster.PosX = rnd.Next(0, GAME_FIELD_SIZE);
+                monster.PosY = rnd.Next(0, GAME_FIELD_SIZE);
+            }
+        }
+
+
+        private void PrintPlayerStats(CharacterViewModel character)
+        {
+            _printerService.Print($"Health: {character.Health} ");
+
+            if (character as Mage != null)
+            {
+                Mage mage = (Mage)character;
+                _printerService.Print($"Mana: {mage.Mana}");
+            }
+
+            _printerService.PrintLine();
+        }
+
+        private void PrintField(int[,] gameField, CharacterViewModel character, List<Monster> monsters)
+        {
+            for (int y = 0; y < gameField.GetLength(0); y++)
+            {
+                for (int x = 0; x < gameField.GetLength(1); x++)
+                {
+                    if (x == character.PosX && y == character.PosY)
+                    {
+                        _printerService.Print(character.CharacterSymbol);
+                        continue;
+                    }
+
+                    if (monsters.Any(m => m.PosX == x && m.PosY == y))
+                    {
+                        Monster? monster = monsters.FirstOrDefault();
+                        
+                        if (monster != null)
+                        {
+                            _printerService.Print(monster.CharacterSymbol);
+                        }
+                        continue;
+                    }
+
+
+                    _printerService.Print(EMPTY_FIELD_SYMBOL);
+                }
+
+                _printerService.PrintLine();
             }
         }
 
@@ -51,42 +166,13 @@ namespace WarriorsAndMagesRPG.Core.Services
             }
         }
 
-        private void PrintPlayerStats()
+        private void ShowException(string message)
         {
-            _printerService.Print($"Health: {_character.Health} ");
-
-            if (_character as Mage != null)
-            {
-                Mage mage = (Mage)_character;
-                _printerService.Print($"Mana: {mage.Mana}");
-            }
-
             _printerService.PrintLine();
-        }
+            _printerService.PrintLine(message);
 
-        private void PrintField()
-        {
-            for (int y = 0; y < _gameField.GetLength(0); y++)
-            {
-                for (int x = 0; x < _gameField.GetLength(1); x++)
-                {
-                    if (x == _character.PosX && y == _character.PosY)
-                    {
-                        _printerService.Print(_character.CharacterSymbol);
-                        continue;
-                    }
-
-                    if (x == _monster.PosX && y == _monster.PosY)
-                    {
-                        _printerService.Print(_monster.CharacterSymbol);
-                        continue;
-                    }
-
-                    _printerService.Print(EMPTY_FIELD_SYMBOL);
-                }
-
-                _printerService.PrintLine();
-            }
+            _printerService.PrintLine("Press any key to continue...");
+            _readerService.ReadKey();
         }
     }
 }

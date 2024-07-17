@@ -37,7 +37,6 @@ namespace WarriorsAndMagesRPG.Core.Services
         }
         public void ShowMenu(int[,] gameField, CharacterViewModel character)
         {
-            _printerService.Clear();
             _gameplayService.StartGame(gameField, character);
         }
 

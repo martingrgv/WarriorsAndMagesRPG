@@ -41,37 +41,49 @@ namespace WarriorsAndMagesRPG.Core.Models
 
         public void Move(char key)
         {
-            switch (Char.ToLower(key))
+            int newPosX = PosX;
+            int newPosY = PosY;
+
+            switch (char.ToLower(key))
             {
                 case 'w':
-                    PosX -= Range;
-                    return;
+                    newPosY = PosY - Range;
+                    break;
                 case 'a':
-                    PosY -= Range;
-                    return;
+                    newPosX = PosX - Range;
+                    break;
                 case 's':
-                    PosX += Range;
-                    return;
+                    newPosY = PosY + Range;
+                    break;
                 case 'd':
-                    PosY += Range;
-                    return;
+                    newPosX = PosX + Range;
+                    break;
                 case 'e':
-                    PosX -= Range;
-                    PosY += Range;
-                    return;
+                    newPosX = PosX + Range;
+                    newPosY = PosY - Range;
+                    break;
                 case 'x':
-                    PosX += Range;
-                    PosY += Range;
-                    return;
+                    newPosX = PosX + Range;
+                    newPosY = PosY + Range;
+                    break;
                 case 'q':
-                    PosX -= Range;
-                    PosY -= Range;
-                    return;
+                    newPosX = PosX - Range;
+                    newPosY = PosY - Range;
+                    break;
                 case 'z':
-                    PosX -= Range;
-                    PosY -= Range;
-                    return;
+                    newPosX = PosX - Range;
+                    newPosY = PosY + Range;
+                    break;
             }
+
+            if (newPosX < 0 || newPosX >= GAME_FIELD_SIZE||
+                newPosY < 0 || newPosY >= GAME_FIELD_SIZE)
+            {
+                throw new InvalidOperationException("Cannot move outside of boundries");
+            }
+
+            PosX = newPosX;
+            PosY = newPosY;
         }
     }
 }
