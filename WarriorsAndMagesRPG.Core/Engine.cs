@@ -73,21 +73,10 @@ namespace WarriorsAndMagesRPG.Core
                     {
                         printerService.PrintLine($"Remaining Points: {points}");
 
+                        foreach (var stat in BUFF_STATS)
                         try
                         {
-                            points = controller.AddStatsToCharacter(player, "Strenght", points);
-                            printerService.PrintLine($"Remaining Points: {points}");
-
-                            if (points <= 0)
-                                break;
-
-                            points = controller.AddStatsToCharacter(player, "Agility", points);
-                            printerService.PrintLine($"Remaining Points: {points}");
-
-                            if (points <= 0)
-                                break;
-
-                            points = controller.AddStatsToCharacter(player, "Intelligence", points);
+                            points = controller.AddStatsToCharacter(player, stat, points);
                             printerService.PrintLine($"Remaining Points: {points}");
 
                             if (points <= 0)

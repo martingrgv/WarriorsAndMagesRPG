@@ -1,8 +1,6 @@
 ﻿using WarriorsAndMagesRPG.Core.Contracts;
 using WarriorsAndMagesRPG.Core.Models;
 using WarriorsAndMagesRPG.Infrastructure;
-using WarriorsAndMagesRPG.Infrastructure.Models;
-using static WarriorsAndMagesRPG.Core.Constants;
 
 namespace WarriorsAndMagesRPG.Core
 {
@@ -32,13 +30,13 @@ namespace WarriorsAndMagesRPG.Core
 
                 switch (statName)
                 {
-                    case "Strenght":
+                    case nameof(Character.Strength):
                         character.Strength += pointsToAdd;
                         break;
-                    case "Agility":
+                    case nameof(Character.Agility):
                         character.Agility += pointsToAdd;
                         break;
-                    case "Intelligence":
+                    case nameof(Character.Intelligence):
                         character.Intelligence += pointsToAdd;
                         break;
                     default:
@@ -53,7 +51,7 @@ namespace WarriorsAndMagesRPG.Core
             }
         }
 
-        public Models.Character GetCharacter(char choice)
+        public Character GetCharacter(char choice)
         {
             switch (choice)
             {

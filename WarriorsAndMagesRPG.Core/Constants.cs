@@ -25,6 +25,7 @@
             "Thank you for playing! Good bye.";
 
         public const int BUFF_LIMIT_POINTS = 3;
+        public static readonly string[] BUFF_STATS = { "Strength", "Agility", "Intelligence" };
 
         public const char EMPTY_FIELD_SYMBOL = '▒';
 
