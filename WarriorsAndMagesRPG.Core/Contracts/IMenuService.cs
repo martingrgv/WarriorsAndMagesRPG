@@ -1,9 +1,12 @@
-﻿using WarriorsAndMagesRPG.Core.Models.Enums;
+﻿using WarriorsAndMagesRPG.Core.Models;
+using WarriorsAndMagesRPG.Core.Models.Enums;
 
 namespace WarriorsAndMagesRPG.Core.Contracts
 {
     public interface IMenuService
     {
-        void ShowMenu(Menu menu);
+        void SetMenu(Menu menu);
+        void ShowMenu();
+        void ShowMenu(int[,] gameField, CharacterViewModel character);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using WarriorsAndMagesRPG.Core.Models;
 using WarriorsAndMagesRPG.Infrastructure;
+using WarriorsAndMagesRPG.Infrastructure.Models;
 
 namespace WarriorsAndMagesRPG.Core.Contracts
 {
