@@ -4,12 +4,21 @@ namespace WarriorsAndMagesRPG.Core.Models
 {
     public class Monster : CharacterViewModel
     {
-        public Monster() : base (GetRandom(), GetRandom(), GetRandom(), MONSTER_RANGE, MONSTER_SYMBOL) { }
+        public Monster() : base(GetRandomStats(), GetRandomStats(), GetRandomStats(), MONSTER_RANGE, MONSTER_SYMBOL, GetRandomPos(), GetRandomPos())
+        {
+            base.Setup();
+        }
 
-        private static int GetRandom()
+        private static int GetRandomStats()
         {
             Random rnd = new Random();
             return rnd.Next(MONSTER_STATUS_MIN_RANDOM, MONSTER_STATUS_MAX_RANDOM);
+        }
+
+        private static int GetRandomPos()
+        {
+            Random rnd = new Random();
+            return rnd.Next(0, GAME_FIELD_SIZE);
         }
     }
 }

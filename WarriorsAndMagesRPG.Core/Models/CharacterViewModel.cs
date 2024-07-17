@@ -1,8 +1,10 @@
-﻿namespace WarriorsAndMagesRPG.Core.Models
+﻿using static WarriorsAndMagesRPG.Core.Constants;
+
+namespace WarriorsAndMagesRPG.Core.Models
 {
     public abstract class CharacterViewModel
     {
-        protected CharacterViewModel(int strength, int agility, int intelligence, int range, char characterSymbol) 
+        protected CharacterViewModel(int strength, int agility, int intelligence, int range, char characterSymbol, int startPosX, int startPosY) 
         {
             Strength = strength;
             Agility = agility;
@@ -10,6 +12,8 @@
             Range = range;
             CharacterSymbol = characterSymbol;
             DateCreated = DateTime.UtcNow;
+            PosX = startPosX;
+            PosY = startPosY;
         }
 
         public int Health { get; set; }
@@ -40,20 +44,32 @@
             switch (Char.ToLower(key))
             {
                 case 'w':
+                    PosX -= Range;
                     return;
                 case 'a':
+                    PosY -= Range;
                     return;
                 case 's':
+                    PosX += Range;
                     return;
                 case 'd':
+                    PosY += Range;
                     return;
                 case 'e':
+                    PosX -= Range;
+                    PosY += Range;
                     return;
                 case 'x':
+                    PosX += Range;
+                    PosY += Range;
                     return;
                 case 'q':
+                    PosX -= Range;
+                    PosY -= Range;
                     return;
                 case 'z':
+                    PosX -= Range;
+                    PosY -= Range;
                     return;
             }
         }
