@@ -34,9 +34,23 @@ namespace WarriorsAndMagesRPG.Core.Models
             this.Damage = this.Agility * 2;
         }
 
-        public void Attack(Character monster)
+        public virtual void Attack(Character character)
         {
-            monster.Health -= this.Strength;
+            if (CharacterInAttackRange(this, character))
+            {
+                character.Health -= this.Strength;
+                return;
+            }
+
+            throw new InvalidOperationException("No available targets in your range.");
+        }
+
+        public bool CharacterInAttackRange(Character attacker, Character attacked)
+        {
+            int diffX = Math.Abs(attacker.PosX - attacked.PosX);
+            int diffY = Math.Abs(attacker.PosY - attacked.PosY);
+
+            return diffX <= this.Range && diffY <= this.Range;
         }
 
         public void Move(char key)

@@ -17,27 +17,22 @@ namespace WarriorsAndMagesRPG.Core.Services
 
         public void StartGame(int[,] gameField, Character character)
         {
-            List<Monster> monsters = new List<Monster>() { new Monster() };
+            Monster monster = new Monster();
+            CheckMonsterLocation(character, monster);
 
-            while (true)
+            while (character.Health > 0 && monster.Health > 0)
             {
                 try
                 {
                     _printerService.Clear();
 
-
-                    foreach (var monster in monsters)
-                    {
-                        CheckMonsterLocation(character, monster);
-                    }
-
                     PrintPlayerStats(character);
-                    PrintField(gameField, character, monsters);
+                    PrintField(gameField, character, monster);
                     PrintAction();
 
-                    HandleAction(character);
-
-                    //CreateMonster(character, monsters);
+                    monster.FollowCharacter(character);
+                    monster.Attack(character);
+                    HandleAction(character, monster);
                 }
                 catch (ArgumentException e)
                 {
@@ -52,10 +47,24 @@ namespace WarriorsAndMagesRPG.Core.Services
                     ShowException(e.Message);
                 }
             }
+
+            _printerService.PrintLine();
+
+            if (character.Health <= 0)
+            {
+                _printerService.PrintLine(LOST_TEXT);
+            }
+            else if (monster.Health <= 0)
+            {
+                _printerService.PrintLine(WON_TEXT);
+            }
+
+            _printerService.PrintLine("Press any key to continue...");
+            _readerService.ReadKey();
         }
 
 
-        private void HandleAction(Character character)
+        private void HandleAction(Character character, Monster monster)
         {
             char act = _readerService.ReadKey();
 
@@ -64,43 +73,42 @@ namespace WarriorsAndMagesRPG.Core.Services
                 throw new ArgumentException("Invalid action! Try again.");
             }
 
-            _printerService.PrintLine();
-            _printerService.PrintLine($"Choose direction ({string.Join(", ", MOVEMENT_KEYS)}):");
-            char key = char.ToLower(_readerService.ReadKey());
-
-            CheckKey(key);
-
             if (act == '1')
             {
-                //character.Attack();
+                character.Attack(monster);
+                return;
             }
-            else if (act == '2')
-            {
-                character.Move(key);
-            }
-        }
 
-        private void CheckKey(char key)
-        {
-            if (!MOVEMENT_KEYS.Any(k => k != key))
+            if (act == '2')
             {
+                _printerService.PrintLine();
+                _printerService.PrintLine($"Choose direction ({string.Join(", ", MOVEMENT_KEYS)}):");
+                char key = char.ToLower(_readerService.ReadKey());
+
+                if (IsValidKey(key))
+                {
+                    character.Move(key);
+                    monster.Move(key);
+                    return;
+                }
+                
                 throw new ArgumentException($"{key} is not a valid key!");
             }
         }
 
-        private void Attack(Character character)
+        private bool IsValidKey(char key)
         {
-            //character.Attack();
+            return MOVEMENT_KEYS.Any(k => k != key);
+        }
+
+        private void Attack(Character character, Monster monster)
+        {
+            character.Attack(monster);
         }
 
         private void Move(Character character, char key)
         {
             character.Move(key);
-        }
-
-        private void CreateMonster(Character character, List<Monster> monsters)
-        {
-            monsters.Add(new Monster());
         }
 
         private void CheckMonsterLocation(Character character, Monster monster)
@@ -127,7 +135,7 @@ namespace WarriorsAndMagesRPG.Core.Services
             _printerService.PrintLine();
         }
 
-        private void PrintField(int[,] gameField, Character character, List<Monster> monsters)
+        private void PrintField(int[,] gameField, Character character, Monster monster)
         {
             for (int y = 0; y < gameField.GetLength(0); y++)
             {
@@ -139,14 +147,9 @@ namespace WarriorsAndMagesRPG.Core.Services
                         continue;
                     }
 
-                    if (monsters.Any(m => m.PosX == x && m.PosY == y))
+                    if (x == monster.PosX && y == monster.PosY)
                     {
-                        Monster? monster = monsters.FirstOrDefault();
-                        
-                        if (monster != null)
-                        {
-                            _printerService.Print(monster.CharacterSymbol);
-                        }
+                        _printerService.Print(monster.CharacterSymbol);
                         continue;
                     }
 

@@ -18,6 +18,9 @@
             "Would you like to buff up your stats before starting?\n" +
             "Response (Y\\N):";
 
+        public const string WON_TEXT = "Congrats! You've won!";
+        public const string LOST_TEXT = "GAME OVER! You've lost. Try again.";
+
         public const string EXIT_TEXT =
             "Thank you for playing! Good bye.";
 

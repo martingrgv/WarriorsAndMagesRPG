@@ -9,6 +9,24 @@ namespace WarriorsAndMagesRPG.Core.Models
             base.Setup();
         }
 
+        public override void Attack(Character character)
+        {
+            if (CharacterInAttackRange(this, character))
+            {
+                character.Health -= this.Strength;
+                return;
+            }
+        }
+
+        public void FollowCharacter(Character character)
+        {
+            if (this.PosX < character.PosX - 1) this.PosX++;
+            else if (this.PosX > character.PosX + 1) this.PosX--;
+            
+            if (this.PosY < character.PosY - 1) this.PosY++;
+            else if (this.PosY > character.PosY + 1) this.PosY--;
+        }
+
         private static int GetRandomStats()
         {
             Random rnd = new Random();
