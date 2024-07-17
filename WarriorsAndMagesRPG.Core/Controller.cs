@@ -51,8 +51,6 @@ namespace WarriorsAndMagesRPG.Core
             {
                 throw new ArgumentException("Invalid input! Possibly not a number.");
             }
-
-
         }
 
         public CharacterViewModel GetCharacter(char choice)

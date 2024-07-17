@@ -27,6 +27,7 @@ namespace WarriorsAndMagesRPG.Core
             services.AddSingleton<IReaderService, ConsoleReaderService>();
             services.AddSingleton<IMenuService, MenuService>();
             services.AddSingleton<IController, Controller>();
+            services.AddSingleton<IGameplayService, GameplayService>();
         }
 
         public void Run()
@@ -36,20 +37,22 @@ namespace WarriorsAndMagesRPG.Core
             IMenuService menuService = _serviceProvider.GetService<IMenuService>()!;
             IController controller = _serviceProvider.GetService<IController>()!;
 
-            int[,] playField = new int[10, 10];
+            int[,] playField = new int[GAME_FIELD_SIZE, GAME_FIELD_SIZE];
             char[] charactersRange = {'1', '2', '3'};
 
             while (true)
             {
                 // Main Menu
-                menuService.ShowMenu(Menu.MainMenu);
+                menuService.SetMenu(Menu.MainMenu);
+                menuService.ShowMenu();
                 reader.ReadKey();
 
                 // Character Select Menu
                 char characterChoice = default;
                 while (!charactersRange.Any(c => c == characterChoice))
                 {
-                    menuService.ShowMenu(Menu.CharacterSelect);
+                    menuService.SetMenu(Menu.CharacterSelect);
+                    menuService.ShowMenu();
                     characterChoice = reader.ReadKey();
                 }
 
@@ -97,13 +100,19 @@ namespace WarriorsAndMagesRPG.Core
                     }
                 }
 
+                // Setup player
                 player.Setup();
 
                 // Log character to db
-                controller.LogCharacter(player);
+                //controller.LogCharacter(player);
+
+                // Start game
+                menuService.SetMenu(Menu.InGame);
+                menuService.ShowMenu(playField, player);
 
                 // Exit Menu
-                menuService.ShowMenu(Menu.Exit);
+                menuService.SetMenu(Menu.Exit);
+                menuService.ShowMenu();
                 reader.ReadKey();
 
                 Stop();

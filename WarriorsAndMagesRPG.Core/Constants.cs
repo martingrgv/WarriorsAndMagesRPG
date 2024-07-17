@@ -28,7 +28,7 @@
         public const char MAGE_SYMBOL = '*';
         public const char WARRIOR_SYMBOL = '@';
         public const char ARCHER_SYMBOL = '#';
-        public const char MONSTER_SYMBOL = '◙';
+        public const char MONSTER_SYMBOL = 'M';
 
         public const int MAGE_STRENGTH = 2;
         public const int MAGE_AGILITY = 1;
@@ -50,5 +50,9 @@
         public const int MONSTER_RANGE = 1;
 
         public const int GAME_FIELD_SIZE = 10;
+        public const int START_CHARACTER_POSX = 1;
+        public const int START_CHARACTER_POSY = 1;
+
+        public static readonly string[] GAME_ACTIONS = { "Attack", "Move" };
     }
 }
