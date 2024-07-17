@@ -20,7 +20,7 @@ namespace WarriorsAndMagesRPG.Core
             _context = context;
         }
 
-        public int AddStatsToCharacter(CharacterViewModel character, string statName, int points)
+        public int AddStatsToCharacter(Models.Character character, string statName, int points)
         {
             _printerService.Print($"Add to {statName}: ");
             if (int.TryParse(_readerService.Read(), out int pointsToAdd))
@@ -53,7 +53,7 @@ namespace WarriorsAndMagesRPG.Core
             }
         }
 
-        public CharacterViewModel GetCharacter(char choice)
+        public Models.Character GetCharacter(char choice)
         {
             switch (choice)
             {
@@ -68,9 +68,9 @@ namespace WarriorsAndMagesRPG.Core
             throw new ArgumentException($"Character by choice {choice} could not be created! Possibly not existing.");
         }
 
-        public void LogCharacter(CharacterViewModel characterViewModel)
+        public void LogCharacter(Models.Character characterViewModel)
         {
-            Character character = CharacterMapper.ToCharacter(characterViewModel);
+            Infrastructure.Models.CharacterEntity character = CharacterMapper.ToCharacter(characterViewModel);
             _context.Characters.Add(character);
 
             _context.SaveChanges();

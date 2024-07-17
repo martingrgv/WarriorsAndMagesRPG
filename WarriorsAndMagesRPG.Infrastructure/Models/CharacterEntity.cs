@@ -4,7 +4,7 @@ using WarriorsAndMagesRPG.Infrastructure.Models.Enums;
 
 namespace WarriorsAndMagesRPG.Infrastructure.Models
 {
-    public class Character
+    public class CharacterEntity
     {
         [Key]
         [Comment("Identity key")]

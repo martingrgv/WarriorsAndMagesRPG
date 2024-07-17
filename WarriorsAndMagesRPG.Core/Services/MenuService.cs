@@ -35,7 +35,7 @@ namespace WarriorsAndMagesRPG.Core.Services
                     break;
             }
         }
-        public void ShowMenu(int[,] gameField, CharacterViewModel character)
+        public void ShowMenu(int[,] gameField, Models.Character character)
         {
             _gameplayService.StartGame(gameField, character);
         }

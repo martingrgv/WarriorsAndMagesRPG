@@ -6,11 +6,11 @@ namespace WarriorsAndMagesRPG.Core
 {
     public class CharacterMapper
     {
-        public static Character ToCharacter(CharacterViewModel characterViewModel)
+        public static Infrastructure.Models.CharacterEntity ToCharacter(Models.Character characterViewModel)
         {
             var characterClass = GetCharacterClass(characterViewModel);
 
-            return new Character
+            return new Infrastructure.Models.CharacterEntity
             {
                 CharacterClass = characterClass,
                 Health = characterViewModel.Health,
@@ -24,7 +24,7 @@ namespace WarriorsAndMagesRPG.Core
             };
         }
 
-        private static CharacterClass GetCharacterClass(CharacterViewModel characterViewModel)
+        private static CharacterClass GetCharacterClass(Models.Character characterViewModel)
         {
             if (characterViewModel is Warrior)
             {

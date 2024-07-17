@@ -9,7 +9,7 @@ namespace WarriorsAndMagesRPG.Infrastructure
 
         public WarriorsAndMagesContext(DbContextOptions options) : base(options) { }
 
-        public DbSet<Character> Characters { get; set; }
+        public DbSet<CharacterEntity> Characters { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

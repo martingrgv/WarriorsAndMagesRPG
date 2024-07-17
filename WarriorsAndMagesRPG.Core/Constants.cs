@@ -4,7 +4,7 @@
     {
         public const string MAIN_MENU_TEXT =
             "Welcome!\n" +
-            "Press any key to play."; 
+            "Press any key to play.";
 
         public const string CHARACTER_SELECT_MENU_TEXT =
             "Choose character type:\n" +

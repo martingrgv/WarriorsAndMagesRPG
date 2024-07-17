@@ -58,7 +58,7 @@ namespace WarriorsAndMagesRPG.Core
 
                 printerService.Clear();
 
-                CharacterViewModel player = controller.GetCharacter(characterChoice);
+                Character player = controller.GetCharacter(characterChoice);
 
                 // Character Add Status
                 printerService.PrintLine(STATS_ADD_TEXT);

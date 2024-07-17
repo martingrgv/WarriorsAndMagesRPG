@@ -15,7 +15,7 @@ namespace WarriorsAndMagesRPG.Core.Services
             _readerService = readerService;
         }
 
-        public void StartGame(int[,] gameField, CharacterViewModel character)
+        public void StartGame(int[,] gameField, Character character)
         {
             List<Monster> monsters = new List<Monster>() { new Monster() };
 
@@ -55,7 +55,7 @@ namespace WarriorsAndMagesRPG.Core.Services
         }
 
 
-        private void HandleAction(CharacterViewModel character)
+        private void HandleAction(Character character)
         {
             char act = _readerService.ReadKey();
 
@@ -88,22 +88,22 @@ namespace WarriorsAndMagesRPG.Core.Services
             }
         }
 
-        private void Attack()
+        private void Attack(Character character)
         {
-            //_character.Attack();
+            //character.Attack();
         }
 
-        private void Move(CharacterViewModel character, char key)
+        private void Move(Character character, char key)
         {
             character.Move(key);
         }
 
-        private void CreateMonster(CharacterViewModel character, List<Monster> monsters)
+        private void CreateMonster(Character character, List<Monster> monsters)
         {
             monsters.Add(new Monster());
         }
 
-        private void CheckMonsterLocation(CharacterViewModel character, Monster monster)
+        private void CheckMonsterLocation(Character character, Monster monster)
         {
             while (monster.PosX == character.PosX && monster.PosY == character.PosY)
             {
@@ -114,7 +114,7 @@ namespace WarriorsAndMagesRPG.Core.Services
         }
 
 
-        private void PrintPlayerStats(CharacterViewModel character)
+        private void PrintPlayerStats(Character character)
         {
             _printerService.Print($"Health: {character.Health} ");
 
@@ -127,7 +127,7 @@ namespace WarriorsAndMagesRPG.Core.Services
             _printerService.PrintLine();
         }
 
-        private void PrintField(int[,] gameField, CharacterViewModel character, List<Monster> monsters)
+        private void PrintField(int[,] gameField, Character character, List<Monster> monsters)
         {
             for (int y = 0; y < gameField.GetLength(0); y++)
             {

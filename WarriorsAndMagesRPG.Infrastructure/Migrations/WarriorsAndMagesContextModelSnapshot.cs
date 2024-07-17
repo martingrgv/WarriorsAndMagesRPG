@@ -70,7 +70,7 @@ namespace WarriorsAndMagesRPG.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Characters");
+                    b.ToTable("Characters", (string)null);
                 });
 #pragma warning restore 612, 618
         }

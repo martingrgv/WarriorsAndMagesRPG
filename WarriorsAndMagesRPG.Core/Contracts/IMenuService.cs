@@ -7,6 +7,6 @@ namespace WarriorsAndMagesRPG.Core.Contracts
     {
         void SetMenu(Menu menu);
         void ShowMenu();
-        void ShowMenu(int[,] gameField, CharacterViewModel character);
+        void ShowMenu(int[,] gameField, Character character);
     }
 }

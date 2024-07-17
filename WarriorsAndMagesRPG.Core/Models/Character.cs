@@ -2,9 +2,9 @@
 
 namespace WarriorsAndMagesRPG.Core.Models
 {
-    public abstract class CharacterViewModel
+    public abstract class Character
     {
-        protected CharacterViewModel(int strength, int agility, int intelligence, int range, char characterSymbol, int startPosX, int startPosY) 
+        protected Character(int strength, int agility, int intelligence, int range, char characterSymbol, int startPosX, int startPosY) 
         {
             Strength = strength;
             Agility = agility;
@@ -34,7 +34,7 @@ namespace WarriorsAndMagesRPG.Core.Models
             this.Damage = this.Agility * 2;
         }
 
-        public void Attack(CharacterViewModel monster)
+        public void Attack(Character monster)
         {
             monster.Health -= this.Strength;
         }

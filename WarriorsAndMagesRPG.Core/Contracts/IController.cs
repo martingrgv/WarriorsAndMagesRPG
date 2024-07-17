@@ -6,8 +6,8 @@ namespace WarriorsAndMagesRPG.Core.Contracts
 {
     public interface IController
     {
-        CharacterViewModel GetCharacter(char choice);
-        int AddStatsToCharacter(CharacterViewModel character, string statName, int points);
-        void LogCharacter(CharacterViewModel characterViewModel);
+        Models.Character GetCharacter(char choice);
+        int AddStatsToCharacter(Models.Character character, string statName, int points);
+        void LogCharacter(Models.Character characterViewModel);
     }
 }
