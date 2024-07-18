@@ -13,5 +13,14 @@ namespace WarriorsAndMagesRPG.Core.Models
             this.Mana = this.Intelligence * 3;
             base.Setup();
         }
+
+        public override void Attack(Character character)
+        {
+            if (Mana > 0)
+            {
+                Mana--;
+                base.Attack(character);
+            }
+        }
     }
 }
