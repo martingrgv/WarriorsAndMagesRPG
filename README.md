@@ -3,7 +3,7 @@
 ### ! Created for extending to other project
 
 ## Gameplay
-### Players navigate through a matrix 10x10 searching for a monster to hunt
+### Players navigate through a matrix 10x10 hunting a monster
 1. Player class select
 2. (Optional) Player stats buff
 3. Player can move or attack
