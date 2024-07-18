@@ -2,15 +2,15 @@
 using WarriorsAndMagesRPG.Infrastructure.Models;
 using WarriorsAndMagesRPG.Infrastructure.Models.Enums;
 
-namespace WarriorsAndMagesRPG.Core
+namespace WarriorsAndMagesRPG.Core.Utilities
 {
     public class CharacterMapper
     {
-        public static Infrastructure.Models.CharacterEntity ToCharacter(Models.Character characterViewModel)
+        public static CharacterEntity ToCharacter(Character characterViewModel)
         {
             var characterClass = GetCharacterClass(characterViewModel);
 
-            return new Infrastructure.Models.CharacterEntity
+            return new CharacterEntity
             {
                 CharacterClass = characterClass,
                 Health = characterViewModel.Health,
@@ -24,7 +24,7 @@ namespace WarriorsAndMagesRPG.Core
             };
         }
 
-        private static CharacterClass GetCharacterClass(Models.Character characterViewModel)
+        private static CharacterClass GetCharacterClass(Character characterViewModel)
         {
             if (characterViewModel is Warrior)
             {

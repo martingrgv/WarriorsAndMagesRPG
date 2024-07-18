@@ -1,6 +1,6 @@
 ﻿using WarriorsAndMagesRPG.Core.Contracts;
 using WarriorsAndMagesRPG.Core.Models;
-using static WarriorsAndMagesRPG.Core.Constants;
+using static WarriorsAndMagesRPG.Core.Common.Constants;
 
 namespace WarriorsAndMagesRPG.Core.Services
 {

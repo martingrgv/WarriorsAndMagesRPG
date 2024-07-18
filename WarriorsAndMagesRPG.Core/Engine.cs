@@ -4,7 +4,7 @@ using WarriorsAndMagesRPG.Core.Models;
 using WarriorsAndMagesRPG.Core.Models.Enums;
 using WarriorsAndMagesRPG.Core.Services;
 using WarriorsAndMagesRPG.Infrastructure;
-using static WarriorsAndMagesRPG.Core.Constants;
+using static WarriorsAndMagesRPG.Core.Common.Constants;
 
 namespace WarriorsAndMagesRPG.Core
 {

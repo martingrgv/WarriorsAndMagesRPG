@@ -1,4 +1,4 @@
-﻿using static WarriorsAndMagesRPG.Core.Constants;
+﻿using static WarriorsAndMagesRPG.Core.Common.Constants;
 
 namespace WarriorsAndMagesRPG.Core.Models
 {

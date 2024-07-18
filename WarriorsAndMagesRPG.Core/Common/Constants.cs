@@ -1,4 +1,4 @@
-﻿namespace WarriorsAndMagesRPG.Core
+﻿namespace WarriorsAndMagesRPG.Core.Common
 {
     public static class Constants
     {
