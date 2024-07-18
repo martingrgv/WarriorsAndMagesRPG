@@ -21,3 +21,6 @@
 - Character classes: Mage, Warrior, Archer
 - Log files for player creation in database using Entity Framework Core
 - Engine made for console app using IoC for DI (for other projects like ASP.Net or WinForms preferably implement your own engine)
+
+### What to expect
+- Code documentation
