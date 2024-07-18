@@ -93,7 +93,7 @@ namespace WarriorsAndMagesRPG.Core
                 player.Setup();
 
                 // Log character to db
-                //controller.LogCharacter(player);
+                controller.LogCharacter(player);
 
                 // Start game
                 menuService.SetMenu(Menu.InGame);
