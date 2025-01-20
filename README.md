@@ -23,9 +23,9 @@
 ## 🏛️ Architecture
 *N-tier Architecture*
 
-- Program.cs executes the game engine
 - Engine handles game logic
 - Infrastructure layer provides entities for database character logs
 - Core layer game logic
 
-### Tools: Microsoft.DependencyInjection, EntityFrameworkCore 
+### Tools: 
+Microsoft.DependencyInjection, EntityFrameworkCore, Microsoft SQL Server
